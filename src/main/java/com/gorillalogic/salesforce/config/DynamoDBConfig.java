@@ -8,6 +8,7 @@ import com.amazonaws.client.builder.AwsClientBuilder;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClientBuilder;
+import org.socialsignin.spring.data.dynamodb.mapping.DynamoDBMappingContext;
 import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRepositories;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +17,7 @@ import org.springframework.util.StringUtils;
 
 @Configuration
 @EnableDynamoDBRepositories
-        (basePackages = "com.gorillalogic.salesforce.repository.dynamo")
+        (basePackages = "com.gorillalogic.salesforce.repository.dynamo", mappingContextRef = "dynamoDBMappingContext")
 public class DynamoDBConfig {
 
     @Value("${amazon.dynamodb.endpoint}")
@@ -44,4 +45,10 @@ public class DynamoDBConfig {
         return new
                 AWSStaticCredentialsProvider(new BasicAWSCredentials(amazonAWSAccessKey, amazonAWSSecretKey));
     }
+
+    @Bean
+    public DynamoDBMappingContext dynamoDBMappingContext() {
+        return new DynamoDBMappingContext();
+    }
+
 }

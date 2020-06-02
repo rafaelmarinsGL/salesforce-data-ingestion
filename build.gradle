@@ -18,6 +18,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-rest'
     compile group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.11.573'
     compile group: 'com.github.derjust', name: 'spring-data-dynamodb', version: '5.1.0'
     compileOnly 'org.projectlombok:lombok'
