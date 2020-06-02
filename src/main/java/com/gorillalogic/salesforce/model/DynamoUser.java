@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 @Getter
 @Setter
 @AllArgsConstructor
+@NoArgsConstructor
 @ToString
 public class DynamoUser {
 
@@ -20,6 +21,9 @@ public class DynamoUser {
 
     @DynamoDBAttribute
     private String name;
+
+    @DynamoDBAttribute
+    private String username;
 
     public DynamoUser(String name) {
         this.name = name;
