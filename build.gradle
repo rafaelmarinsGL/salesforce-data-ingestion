@@ -1,6 +1,6 @@
 
 plugins {
-    id 'org.springframework.boot' version '2.2.7.RELEASE'
+    id 'org.springframework.boot' version '2.3.0.RELEASE'
     id 'io.spring.dependency-management' version '1.0.9.RELEASE'
     id 'java'
     id 'maven-publish'
@@ -20,7 +20,6 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     compile group: 'com.amazonaws', name: 'aws-java-sdk-dynamodb', version: '1.11.573'
     compile group: 'com.github.derjust', name: 'spring-data-dynamodb', version: '5.1.0'
-    implementation 'org.springframework.kafka:spring-kafka'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor group: 'org.projectlombok', name:'lombok'
     runtimeOnly 'com.h2database:h2'
