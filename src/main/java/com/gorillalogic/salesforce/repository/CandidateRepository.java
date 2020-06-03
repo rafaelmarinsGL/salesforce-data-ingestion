@@ -1,9 +1,11 @@
 package com.gorillalogic.salesforce.repository;
 
 import com.gorillalogic.salesforce.model.Candidate;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.socialsignin.spring.data.dynamodb.repository.EnableScan;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
-@Repository
-public interface CandidateRepository extends JpaRepository<Candidate, Long> {
+@EnableScan
+@RepositoryRestResource(collectionResourceRel = "candidates", path = "candidates")
+public interface CandidateRepository extends CrudRepository<Candidate, String> {
 }

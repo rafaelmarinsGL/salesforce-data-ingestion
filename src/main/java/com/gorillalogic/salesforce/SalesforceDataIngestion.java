@@ -5,15 +5,17 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBMapper;
 import com.amazonaws.services.dynamodbv2.model.CreateTableRequest;
 import com.amazonaws.services.dynamodbv2.model.ProvisionedThroughput;
 import com.amazonaws.services.dynamodbv2.util.TableUtils;
+import com.gorillalogic.salesforce.model.Candidate;
+import com.gorillalogic.salesforce.model.Contact;
+import com.gorillalogic.salesforce.model.Employee;
 import com.gorillalogic.salesforce.model.User;
 import com.gorillalogic.salesforce.repository.AccountRepository;
 import com.gorillalogic.salesforce.repository.CandidateRepository;
 import com.gorillalogic.salesforce.repository.ContactRepository;
 import com.gorillalogic.salesforce.repository.EmployeeRepository;
-import com.gorillalogic.salesforce.repository.dynamo.UserRepository;
+import com.gorillalogic.salesforce.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.socialsignin.spring.data.dynamodb.repository.config.EnableDynamoDBRepositories;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -32,19 +34,20 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 @EnableDynamoDBRepositories(
         includeFilters = {
                 @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = {
-                        User.class}
+                        User.class, Candidate.class, Contact.class, Employee.class}
                 )
         })
 @Slf4j
 public class SalesforceDataIngestion implements CommandLineRunner {
 
-    private DynamoDBMapper dynamoDBMapper;
-
-    @Autowired
     private AmazonDynamoDB amazonDynamoDB;
 
-    @Autowired
     private UserRepository userRepository;
+
+    public SalesforceDataIngestion(AmazonDynamoDB amazonDynamoDB, UserRepository userRepository) {
+        this.amazonDynamoDB = amazonDynamoDB;
+        this.userRepository = userRepository;
+    }
 
     public static void main(String[] args) {
         SpringApplication.run(SalesforceDataIngestion.class, args);
@@ -53,7 +56,7 @@ public class SalesforceDataIngestion implements CommandLineRunner {
     @Override
     public void run(String... strings) throws Exception {
 
-        dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
+        DynamoDBMapper dynamoDBMapper = new DynamoDBMapper(amazonDynamoDB);
 
 
         CreateTableRequest tableRequest = dynamoDBMapper

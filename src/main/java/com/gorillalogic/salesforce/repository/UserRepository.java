@@ -1,4 +1,4 @@
-package com.gorillalogic.salesforce.repository.dynamo;
+package com.gorillalogic.salesforce.repository;
 
 import com.gorillalogic.salesforce.model.User;
 import org.socialsignin.spring.data.dynamodb.repository.EnableScan;

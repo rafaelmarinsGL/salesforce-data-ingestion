@@ -4,7 +4,7 @@ import com.gorillalogic.salesforce.repository.AccountRepository;
 import com.gorillalogic.salesforce.repository.CandidateRepository;
 import com.gorillalogic.salesforce.repository.ContactRepository;
 import com.gorillalogic.salesforce.repository.EmployeeRepository;
-import com.gorillalogic.salesforce.repository.dynamo.UserRepository;
+import com.gorillalogic.salesforce.repository.UserRepository;
 import com.gorillalogic.salesforce.service.IngestionService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
