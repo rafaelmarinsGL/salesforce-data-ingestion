@@ -2,7 +2,6 @@ package com.gorillalogic.salesforce.model;
 
 import com.amazonaws.services.dynamodbv2.datamodeling.*;
 import com.gorillalogic.salesforce.converter.LocalDateTimeConverter;
-import com.gorillalogic.salesforce.enums.CandidateEnums;
 import com.gorillalogic.salesforce.enums.ContactEnums;
 import lombok.*;
 
