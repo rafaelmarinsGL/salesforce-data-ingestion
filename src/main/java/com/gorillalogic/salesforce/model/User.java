@@ -10,6 +10,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.validation.constraints.Email;
+
 @DynamoDBTable(tableName = "User")
 @Getter
 @Setter
@@ -23,10 +25,61 @@ public class User {
     private String id;
 
     @DynamoDBAttribute
+    private String accountId;
+
+    @DynamoDBAttribute
     private String name;
 
     @DynamoDBAttribute
     private String username;
+
+    @DynamoDBAttribute
+    private String firstName;
+
+    @DynamoDBAttribute
+    private String lastName;
+
+    @DynamoDBAttribute
+    private String title;
+
+    @DynamoDBAttribute
+    private String aboutMe;
+
+    @DynamoDBAttribute
+    private String legacyUserId;
+
+    @DynamoDBAttribute
+    private String email;
+
+    @DynamoDBAttribute
+    private String address;
+
+    @DynamoDBAttribute
+    private String managerUserId;
+
+    @DynamoDBAttribute
+    private String companyName;
+
+    @DynamoDBAttribute
+    private String phone;
+
+    @DynamoDBAttribute
+    private String mobile;
+
+    @DynamoDBAttribute
+    private String fullPhotoUrl;
+
+    @DynamoDBAttribute
+    private String mediumPhotoUrl;
+
+    @DynamoDBAttribute
+    private String smallPhotoUrl;
+
+    @DynamoDBAttribute
+    private String iosPhotoUrl;
+
+    @DynamoDBAttribute
+    private String androidPhotoUrl;
 
     public User(String name) {
         this.name = name;
